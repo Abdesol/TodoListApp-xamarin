@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TodoListApp"
+             xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
+             x:Class="TodoListApp.MainPage">
+
+    <ContentPage.BindingContext>
+        <local:TodoListViewModel />
+    </ContentPage.BindingContext>
+
+    <StackLayout>
+        <Entry 
+            x:Name="InputField"
+            Text="{Binding NewTodoInputValue}"
+            Placeholder="Type Here"
+            ReturnCommand="{Binding AddTodoCommand}">
+        </Entry>
+
+        <ListView x:Name="TodoList" ItemsSource="{Binding TodoItems}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <FlexLayout JustifyContent="SpaceBetween" AlignItems="Center" Padding="20, 0">
+                            <ContentView>
+                                <FlexLayout  AlignItems="Center">
+                                    <input:CheckBox IsChecked="{Binding Complete}"/>
+                                    <Label Text="{Binding TodoText}" FontSize="Large" Padding="5, 5"/>
+                                </FlexLayout>
+                            </ContentView>
+                            <ImageButton 
+                                Source="delete.png"
+                                Scale="1.6"
+                                BackgroundColor="Transparent"
+                                Command="{Binding Path=BindingContext.RemoveTodoCommand, Source={x:Reference TodoList}}" 
+                                CommandParameter="{Binding .}"
+                            />
+                        </FlexLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>
