@@ -8,7 +8,7 @@ It is used for adding your todo tasks for today, toggle them if you are done wit
 To run the code, you have to download the apk under the release page here https://github.com/Abdesol/TodoListApp-xamarin/releases/tag/1.0
 
 ## How it works?
-<img src="./demo.gif" width=500px height=1300px> 
+<img src="./demo.gif" width=640px height=1344px> 
 
 I hope you enjoyed my app.
 Any feedback is Acceptable!
